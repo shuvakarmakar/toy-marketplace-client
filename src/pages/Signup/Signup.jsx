@@ -1,6 +1,13 @@
+import { useContext, useState } from "react";
 import { Link } from "react-router-dom";
+import { AuthContext } from "../../providers/AuthProvider";
 
 const Signup = () => {
+
+    const { createUser } = useContext(AuthContext);
+
+    const [success, setSuccess] = useState('');
+    const [error, setError] = useState('');
 
     const handleSignup = event => {
         event.preventDefault();
@@ -12,6 +19,31 @@ const Signup = () => {
         const photo = form.photo.value;
 
         console.log(name, email, password, photo);
+
+        // Validate
+        if (!/(?=.*[A-Z])/.test(password)) {
+            setError('Please Add at least one UpperCase');
+            return;
+        }
+        else if (!/(?=.*[0-9].*[0-9])/.test(password)) {
+            setError('Please Add at least Two Number');
+            return;
+        }
+        else if (password.length < 6) {
+            setError('Please add at least 6 charecter in your password')
+            return;
+        }
+
+        createUser(email, password)
+            .then((result) => {
+                const createUser = result.user;
+                console.log(createUser);
+                form.reset();
+                setSuccess('SignUp Complete')
+            })
+            .catch((error) => {
+                console.log(error);
+            })
     }
     return (
         <div className="hero min-h-screen bg-base-200">
@@ -55,6 +87,8 @@ const Signup = () => {
                             </div>
                         </form>
                         <p className='my-4 text-center'>Already Have an Account ? Please <Link className="text-amber-200" to='/login'>Login</Link></p>
+                        <p className='text-error font-bold text-lg'>{error}</p>
+                        <p className='text-success font-bold text-lg'>{success}</p>
                     </div>
                 </div>
             </div>

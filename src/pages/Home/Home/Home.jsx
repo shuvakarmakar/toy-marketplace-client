@@ -1,8 +1,13 @@
+import Banner from "../Banner/Banner";
+import Footer from "../Shared/Footer/Footer";
+import Navbar from "../Shared/Navbar/Navbar";
 
 const Home = () => {
     return (
         <div>
-            <h2>This is Home</h2>
+            <Navbar></Navbar>
+            <Banner></Banner>
+            <Footer></Footer>
         </div>
     );
 };

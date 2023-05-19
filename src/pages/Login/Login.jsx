@@ -1,14 +1,15 @@
-import { GoogleAuthProvider } from "firebase/auth";
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaGoogle } from 'react-icons/fa';
 import Navbar from "../Home/Shared/Navbar/Navbar";
 
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext);
+    const navigate = useNavigate();
+    const location = useLocation();
 
-    const googleProvider = new GoogleAuthProvider();
+    const from = location.state?.from?.pathname || '/';
 
     const handleLogin = event => {
         event.preventDefault();
@@ -23,23 +24,24 @@ const Login = () => {
             .then((result) => {
                 const loggedUser = result.user;
                 console.log(loggedUser);
+                navigate(from, { replace: true });
             })
             .catch((error) => {
                 console.log(error);
             })
     }
 
-    // Handle Google Signin
     const handleGoogleLogin = () => {
-        signInWithGoogle(googleProvider)
-            .then((result) => {
-                const loggedUser = result.user;
-                console.log(loggedUser);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
-    }
+        signInWithGoogle()
+          .then((result) => {
+            const loggedUser = result.user;
+            console.log(loggedUser);
+            navigate(from, { replace: true });
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+      };
 
     return (
         <>

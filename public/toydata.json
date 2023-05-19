@@ -1,0 +1,66 @@
+{
+    "MathToys": [
+        {
+            "picture": "math_toy1.jpg",
+            "name": "Math Puzzle Set",
+            "price": 19.99,
+            "rating": 4.5,
+            "viewDetailsButton": "https://example.com/toy1-details"
+        },
+        {
+            "picture": "math_toy2.jpg",
+            "name": "Counting Blocks",
+            "price": 12.99,
+            "rating": 4.0,
+            "viewDetailsButton": "https://example.com/toy2-details"
+        }
+    ],
+    "LanguageToys": [
+        {
+            "picture": "language_toy1.jpg",
+            "name": "Alphabet Flashcards",
+            "price": 9.99,
+            "rating": 4.3,
+            "viewDetailsButton": "https://example.com/toy3-details"
+        },
+        {
+            "picture": "language_toy2.jpg",
+            "name": "Word Building Blocks",
+            "price": 14.99,
+            "rating": 4.8,
+            "viewDetailsButton": "https://example.com/toy4-details"
+        }
+    ],
+    "EngineeringToys": [
+        {
+            "picture": "engineering_toy1.jpg",
+            "name": "Magnetic Building Set",
+            "price": 29.99,
+            "rating": 4.6,
+            "viewDetailsButton": "https://example.com/toy5-details"
+        },
+        {
+            "picture": "engineering_toy2.jpg",
+            "name": "Robotic Construction Kit",
+            "price": 49.99,
+            "rating": 4.2,
+            "viewDetailsButton": "https://example.com/toy6-details"
+        }
+    ],
+    "ScienceToys": [
+        {
+            "picture": "science_toy1.jpg",
+            "name": "Microscope Kit",
+            "price": 39.99,
+            "rating": 4.7,
+            "viewDetailsButton": "https://example.com/toy7-details"
+        },
+        {
+            "picture": "science_toy2.jpg",
+            "name": "Chemistry Lab Set",
+            "price": 34.99,
+            "rating": 4.4,
+            "viewDetailsButton": "https://example.com/toy8-details"
+        }
+    ]
+}

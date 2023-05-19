@@ -1,10 +1,14 @@
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
 import { useForm } from "react-hook-form";
+import { useContext } from "react";
+import { AuthContext } from "../../../providers/AuthProvider";
 
 const AddAToy = () => {
 
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { user } = useContext(AuthContext);
+
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = data => console.log(data);
     return (
         <>
@@ -26,11 +30,11 @@ const AddAToy = () => {
                     <div className="flex mb-6">
                         <div className="w-1/2 pr-2">
                             <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="sellerName">Seller Name</label>
-                            <input className="input input-bordered input-error w-full" id="sellerName" type="text" {...register("sellerName")} />
+                            <input className="input input-bordered input-error w-full" defaultValue={user?.name} id="sellerName" type="text" {...register("sellerName")} />
                         </div>
                         <div className="w-1/2 pl-2">
                             <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="sellerEmail">Seller Email</label>
-                            <input className="input input-bordered input-error w-full" id="sellerEmail" type="text" {...register("sellerEmail")} />
+                            <input className="input input-bordered input-error w-full" defaultValue={user?.email} id="sellerEmail" type="text" {...register("sellerEmail")} />
                         </div>
                     </div>
 

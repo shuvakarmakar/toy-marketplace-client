@@ -3,13 +3,31 @@ import Navbar from "../Shared/Navbar/Navbar";
 import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
+import Swal from "sweetalert2";
 
 const AddAToy = () => {
 
     const { user } = useContext(AuthContext);
 
     const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = data => console.log(data);
+
+    const onSubmit = (data) => {
+        fetch("http://localhost:5000/addAToy", {
+            method: 'POST',
+            headers: {
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(res => res.json())
+        .then(result =>{
+            console.log(result);
+            if(result.insertedId){
+                Swal.fire('Sign Up Complete')
+            }
+        })
+        console.log(data);
+    }
     return (
         <>
             <Navbar></Navbar>
@@ -30,17 +48,17 @@ const AddAToy = () => {
                     <div className="flex mb-6">
                         <div className="w-1/2 pr-2">
                             <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="sellerName">Seller Name</label>
-                            <input className="input input-bordered input-error w-full" defaultValue={user?.name} id="sellerName" type="text" {...register("sellerName")} />
+                            <input className="input input-bordered input-error w-full" id="sellerName" type="text" {...register("sellerName")} />
                         </div>
                         <div className="w-1/2 pl-2">
                             <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="sellerEmail">Seller Email</label>
-                            <input className="input input-bordered input-error w-full" defaultValue={user?.email} id="sellerEmail" type="text" {...register("sellerEmail")} />
+                            <input className="input input-bordered input-error w-full" id="sellerEmail" type="text" {...register("sellerEmail")} />
                         </div>
                     </div>
 
                     <div className="mb-6">
-                        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="gender">Gender</label>
-                        <select className="input input-bordered input-error w-full" id="gender" {...register("gender")}>
+                        <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="subCategory">subCategory</label>
+                        <select className="input input-bordered input-error w-full" id="subCategory" {...register("subCategory")}>
                             <option value="MathToys">Math Toys</option>
                             <option value="LanguageToys">Language Toys</option>
                             <option value="EngineeringToys">Engineering Toys</option>

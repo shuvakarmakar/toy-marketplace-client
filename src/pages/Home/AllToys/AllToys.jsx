@@ -15,7 +15,7 @@ const AllToys = () => {
     return (
         <div>
             <Navbar></Navbar>
-            <div className="overflow-x-auto w-full">
+            <div className="overflow-x-auto">
                 <table className="table w-full">
                     {/* head */}
                     <thead>
@@ -25,7 +25,7 @@ const AllToys = () => {
                                     <input type="checkbox" className="checkbox" />
                                 </label>
                             </th>
-                            <th>Seller Name</th>
+                            <th className="text-center lg:pl-12">Seller Name</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
                             <th>Price</th>
@@ -35,14 +35,10 @@ const AllToys = () => {
                         </tr>
                     </thead>
                     <tbody>
-                        {
-                            toys.map(toy => <AllToy
-                                key={toy._id}
-                                toy={toy}
-                            ></AllToy>)
-                        }
+                        {toys.map((toy) => (
+                            <AllToy key={toy._id} toy={toy}></AllToy>
+                        ))}
                     </tbody>
-
                 </table>
             </div>
             <Footer></Footer>

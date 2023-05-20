@@ -9,7 +9,7 @@ const AddAToy = () => {
 
     const { user } = useContext(AuthContext);
 
-    const { register, handleSubmit, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors }, reset } = useForm();
 
     const onSubmit = (data) => {
         fetch("https://toy-marketplace-server-red.vercel.app/addAToy", {
@@ -23,10 +23,12 @@ const AddAToy = () => {
         .then(result =>{
             console.log(result);
             if(result.insertedId){
-                Swal.fire('Sign Up Complete')
+                Swal.fire('Sign Up Complete');
+                
             }
         })
         console.log(data);
+        reset(); 
     }
     return (
         <>

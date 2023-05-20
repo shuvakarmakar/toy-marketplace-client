@@ -1,6 +1,6 @@
 
 const AllToy = ({ toy }) => {
-    const { name, sellerName, subCategory, price, ratings, availableQuantity, description, _id, photoUrl } = toy || {};
+    const { name, sellerName, subCategory, price, availableQuantity, _id, photoUrl } = toy || {};
     return (
         <tr>
             <th>

@@ -9,7 +9,7 @@ const AllToys = () => {
     useEffect(() => {
         fetch('http://localhost:5000/allToys')
             .then(res => res.json())
-            .then(data => setToys(data))
+            .then(data => setToys(data.slice(0, 20))) // Set the first 20 toys
     }, [])
 
     return (
@@ -25,7 +25,7 @@ const AllToys = () => {
                                     <input type="checkbox" className="checkbox" />
                                 </label>
                             </th>
-                            <th>Seller</th>
+                            <th>Seller Name</th>
                             <th>Toy Name</th>
                             <th>Sub-category</th>
                             <th>Price</th>

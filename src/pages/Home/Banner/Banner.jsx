@@ -10,7 +10,7 @@ const Banner = () => {
             <div id="slide1" className="carousel-item relative w-full">
                 <img src={img1} className="w-full" />
                 <div className="absolute h-full flex items-center left-0 top-0 bg-gradient-to-r from-[#151515] to-[rgba(21, 21, 21, 0)]">
-                    <div className='text-white space-y-7 pl-12 w-1/2'>
+                    <div className='text-white space-y-7 pl-12 w-1/2' data-aos="fade-right">
                         <h2 className='text-6xl font-bold'>Educational and Learning Toys</h2>
                         <p>Give children toys that are powered by their imagination, not by batteries.</p>
                         <div>

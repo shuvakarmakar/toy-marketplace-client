@@ -7,7 +7,7 @@ const AllToys = () => {
     const [toys, setToys] = useState([]);
 
     useEffect(() => {
-        fetch('http://localhost:5000/allToys')
+        fetch('https://toy-marketplace-server-red.vercel.app/allToys')
             .then(res => res.json())
             .then(data => setToys(data.slice(0, 20))) // Set the first 20 toys
     }, [])

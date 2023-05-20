@@ -19,7 +19,7 @@ const Category = () => {
     };
 
     return (
-        <div className='mb-5'>
+        <div className='mb-5' data-aos="zoom-out-left">
             <h2 className='text-center text-4xl font-bold my-5'>Shop By Category</h2>
             <div className='w-4/5 mx-auto'>
                 <Tabs>

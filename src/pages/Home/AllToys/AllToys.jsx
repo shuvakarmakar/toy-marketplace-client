@@ -18,7 +18,7 @@ const AllToys = () => {
     }, [])
 
     const handleSearch = () =>{
-            fetch(`http://localhost:5000/toySearchByTitle/${searchText}`)
+            fetch(`https://toy-marketplace-server-red.vercel.app/toySearchByTitle/${searchText}`)
             .then(res => res.json())
             .then(data =>{
                 setToys(data);

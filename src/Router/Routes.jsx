@@ -52,7 +52,7 @@ const router = createBrowserRouter([
         loader: ({ params }) => fetch(`https://toy-marketplace-server-red.vercel.app/allToys/${params.id}`)
       },
       {
-        path: "",
+        path: "updatetoy/:id",
         element: <UpdateToy></UpdateToy>,
         // loader: ({params}) => fetch(`http://localhost:5000/myToys/${params.id}`)
       },

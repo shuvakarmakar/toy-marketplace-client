@@ -1,5 +1,6 @@
 import { useContext, useEffect, useState } from "react";
 import Swal from "sweetalert2";
+import useTitle from "../../../hook/useTitle";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
@@ -10,6 +11,9 @@ const MyToys = () => {
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
     // const [toys, setToys] = useState([]);
+
+    // For Dynamic Url
+    useTitle("My Toys || Super Kiddo")
 
     useEffect(() => {
         fetch(`https://toy-marketplace-server-red.vercel.app/myToys/${user?.email}`)
@@ -39,7 +43,7 @@ const MyToys = () => {
                         if (data.deleteCount > 0) {
                             Swal.fire(
                                 'Deleted!',
-                                'Your Coffee has been deleted.',
+                                'Your Toy has been deleted.',
                                 'success'
                             );
                             const remaining = myToys.filter(myT => myT._id !== _id);
@@ -74,7 +78,7 @@ const MyToys = () => {
                         <th className="text-center lg:pl-12">Seller Name</th>
                         <th>Toy Name</th>
                         <th>Sub-category</th>
-                        <th>Price</th>
+                        <th>Price (USD)</th>
                         <th>Available Quantity</th>
                         <th>View Details button</th>
                         <th></th>

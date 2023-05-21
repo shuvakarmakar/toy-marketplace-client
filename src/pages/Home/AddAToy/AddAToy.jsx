@@ -4,8 +4,12 @@ import { useForm } from "react-hook-form";
 import { useContext } from "react";
 import { AuthContext } from "../../../providers/AuthProvider";
 import Swal from "sweetalert2";
+import useTitle from "../../../hook/useTitle";
 
 const AddAToy = () => {
+
+    // Dynamic Url
+    useTitle("Add A Toy || Super Kiddo");
 
     const { user } = useContext(AuthContext);
 
@@ -19,16 +23,16 @@ const AddAToy = () => {
             },
             body: JSON.stringify(data)
         })
-        .then(res => res.json())
-        .then(result =>{
-            console.log(result);
-            if(result.insertedId){
-                Swal.fire('Sign Up Complete');
-                
-            }
-        })
+            .then(res => res.json())
+            .then(result => {
+                console.log(result);
+                if (result.insertedId) {
+                    Swal.fire('Toy Added Succesfully');
+
+                }
+            })
         console.log(data);
-        reset(); 
+        reset();
     }
     return (
         <>
@@ -69,7 +73,7 @@ const AddAToy = () => {
 
                     <div className="flex mb-6">
                         <div className="w-1/2 pr-2">
-                            <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="price">Price</label>
+                            <label className="text-gray-700 text-sm font-bold mb-2" htmlFor="price">Price (USD)</label>
                             <input className="input input-bordered input-error w-full" id="price" type="text" {...register("price")} />
                         </div>
                         <div className="w-1/2 pl-2">

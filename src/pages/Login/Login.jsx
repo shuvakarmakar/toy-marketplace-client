@@ -3,11 +3,13 @@ import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../../providers/AuthProvider";
 import { FaGoogle } from 'react-icons/fa';
 import Navbar from "../Home/Shared/Navbar/Navbar";
+import useTitle from "../../hook/useTitle";
 
 const Login = () => {
     const { signIn, signInWithGoogle } = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
+    useTitle('Login || Super Kiddo')
 
     const from = location.state?.from?.pathname || '/';
 

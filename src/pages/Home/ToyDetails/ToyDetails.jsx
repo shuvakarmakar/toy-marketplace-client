@@ -1,10 +1,14 @@
 import { useLoaderData } from "react-router-dom";
+import useTitle from "../../../hook/useTitle";
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
 
 const ToyDetails = () => {
     const toyData = useLoaderData();
     const { photoUrl, sellerName, sellerEmail, price, ratings, availableQuantity, description, name } = toyData;
+
+    // Dynamic Url
+    useTitle("Toy Details || Super Kiddo");
 
     return (
         <>

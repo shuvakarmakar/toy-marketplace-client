@@ -1,10 +1,14 @@
 import { useEffect, useState } from "react";
+import useTitle from "../../../hook/useTitle";
 import Footer from "../Shared/Footer/Footer";
 import Navbar from "../Shared/Navbar/Navbar";
 import AllToy from "./AllToy";
 
 const AllToys = () => {
     const [toys, setToys] = useState([]);
+
+    // Dynamic Url
+    useTitle("All Toys || Super Kiddo");
 
     useEffect(() => {
         fetch('https://toy-marketplace-server-red.vercel.app/allToys')

@@ -1,7 +1,11 @@
+import useTitle from "../../hook/useTitle";
 import Footer from "../Home/Shared/Footer/Footer";
 import Navbar from "../Home/Shared/Navbar/Navbar";
 
 const Blog = () => {
+    // Dynamic Url
+    useTitle("Blogs || Super Kiddo");
+    
     return (
         <>
             <Navbar></Navbar>

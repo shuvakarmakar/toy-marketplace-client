@@ -17,7 +17,7 @@ const Footer = () => {
             </div>
             <div>
                 <p className="text-center text-sm">Let's Create Something Amazing Together!</p>
-                <p className="text-center text-sm">© 2023 - All rights reserved by EduLearn Toys</p>
+                <p className="text-center text-sm">© 2023 - All rights reserved by Super Kiddo</p>
             </div>
         </footer>
     );

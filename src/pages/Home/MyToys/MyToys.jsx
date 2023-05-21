@@ -10,10 +10,11 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
+    
     // const [toys, setToys] = useState([]);
 
     // For Dynamic Url
-    useTitle("My Toys || Super Kiddo")
+    useTitle("My Toys || Super Kiddo");
 
     useEffect(() => {
         fetch(`https://toy-marketplace-server-red.vercel.app/myToys/${user?.email}`)

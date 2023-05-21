@@ -7,6 +7,7 @@ import AddAToy from "../pages/Home/AddAToy/AddAToy";
 import AllToys from "../pages/Home/AllToys/AllToys";
 import Home from "../pages/Home/Home/Home";
 import MyToys from "../pages/Home/MyToys/MyToys";
+import UpdateToy from "../pages/Home/MyToys/UpdateToy";
 import ToyDetails from "../pages/Home/ToyDetails/ToyDetails";
 import Login from "../pages/Login/Login";
 import Signup from "../pages/Signup/Signup";
@@ -49,6 +50,11 @@ const router = createBrowserRouter([
         path: "/toy/:id",
         element: <PrivateRoute><ToyDetails></ToyDetails></PrivateRoute>,
         loader: ({ params }) => fetch(`https://toy-marketplace-server-red.vercel.app/allToys/${params.id}`)
+      },
+      {
+        path: "",
+        element: <UpdateToy></UpdateToy>,
+        // loader: ({params}) => fetch(`http://localhost:5000/myToys/${params.id}`)
       },
       {
         path: "*",

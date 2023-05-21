@@ -3,9 +3,9 @@ import { Link } from "react-router-dom";
 import Swal from "sweetalert2";
 import { AuthContext } from "../../providers/AuthProvider";
 import Navbar from "../Home/Shared/Navbar/Navbar";
+import { getAuth, updateProfile } from "firebase/auth";
 
 const Signup = () => {
-
     const { createUser } = useContext(AuthContext);
 
     const [success, setSuccess] = useState('');
@@ -32,7 +32,7 @@ const Signup = () => {
             return;
         }
         else if (password.length < 6) {
-            setError('Please add at least 6 charecter in your password')
+            setError('Please add at least 6 characters in your password');
             return;
         }
 
@@ -40,22 +40,35 @@ const Signup = () => {
             .then((result) => {
                 const createUser = result.user;
                 console.log(createUser);
+
+                // Update profile
+                const auth = getAuth();
+                updateProfile(auth.currentUser, {
+                    displayName: name,
+                    photoURL: photo
+                })
+                    .then((result) => {
+                        console.log(result);
+                    })
+                    .catch((error) => {
+                        console.log(error);
+                    });
+
                 form.reset();
-                setSuccess('SignUp Complete');
-                Swal.fire('Sign Up Complete')
+                setSuccess('Sign Up Complete');
+                Swal.fire('Sign Up Complete');
             })
             .catch((error) => {
                 console.log(error);
-            })
+            });
     }
+
     return (
         <>
-        <Navbar></Navbar>
+            <Navbar></Navbar>
             <div className="hero min-h-screen bg-base-200">
                 <div className="hero-content flex-col">
-                    <div className="text-center lg:text-left">
-
-                    </div>
+                    <div className="text-center lg:text-left"></div>
                     <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
                         <div className="card-body">
                             <h1 className="text-2xl font-bold">Signup Here!</h1>
@@ -91,7 +104,7 @@ const Signup = () => {
                                     <input type="submit" value="Sign Up" className="btn btn-primary" />
                                 </div>
                             </form>
-                            <p className='my-4 text-center'>Already Have an Account ? Please <Link className="text-amber-200" to='/login'>Login</Link></p>
+                            <p className='my-4 text-center'>Already Have an Account? Please <Link className="text-amber-200" to='/login'>Login</Link></p>
                             <p className='text-error font-bold text-lg'>{error}</p>
                             <p className='text-success font-bold text-lg'>{success}</p>
                         </div>

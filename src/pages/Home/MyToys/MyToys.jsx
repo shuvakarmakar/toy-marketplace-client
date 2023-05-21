@@ -19,8 +19,7 @@ const MyToys = () => {
             })
     }, [user])
 
-    const handleDelete = _id => {
-        console.log(_id);
+    const handleDelete = (_id) => {
         Swal.fire({
             title: 'Are you sure?',
             text: "You won't be able to revert this!",
@@ -31,8 +30,7 @@ const MyToys = () => {
             confirmButtonText: 'Yes, delete it!'
         }).then((result) => {
             if (result.isConfirmed) {
-                console.log('Delete Confirmed');
-                fetch(`http://localhost:5000/myToys/${_id}`, {
+                fetch(`https://toy-marketplace-server-red.vercel.app/myToys/${_id}`, {
                     method: "DELETE"
                 })
                     .then(res => res.json())
@@ -43,14 +41,23 @@ const MyToys = () => {
                                 'Deleted!',
                                 'Your Coffee has been deleted.',
                                 'success'
-                            )
+                            );
                             const remaining = myToys.filter(myT => myT._id !== _id);
                             setMyToys(remaining);
                         }
                     })
+                    .catch(error => {
+                        console.log(error);
+                        Swal.fire(
+                            'Error',
+                            'Failed to delete the toy.',
+                            'error'
+                        );
+                    });
             }
-        })
-    }
+        });
+    };
+
 
     return (
         <div>

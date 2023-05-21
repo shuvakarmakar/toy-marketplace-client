@@ -10,7 +10,8 @@ const MyToys = () => {
 
     const { user } = useContext(AuthContext);
     const [myToys, setMyToys] = useState([]);
-    
+    const [searchText, setSearchText] = useState("");
+
     // const [toys, setToys] = useState([]);
 
     // For Dynamic Url
@@ -23,6 +24,14 @@ const MyToys = () => {
                 setMyToys(data);
             })
     }, [user])
+
+    const handleSearch = () => {
+        fetch(`http://localhost:5000/toySearchByTitle/${searchText}`)
+            .then(res => res.json())
+            .then(data => {
+                setMyToys(data);
+            })
+    }
 
     const handleDelete = (_id) => {
         Swal.fire({
@@ -67,6 +76,16 @@ const MyToys = () => {
     return (
         <div>
             <Navbar></Navbar>
+            <div className="mb-4 text-center gap-3">
+                <input
+                    type="text"
+                    // value={searchQuery}
+                    onChange={(e) => setSearchText(e.target.value)}
+                    placeholder="Search toys"
+                    className="px-2 py-1 border border-red-900 rounded"
+                />
+                <button onClick={handleSearch} className="btn btn-sm btn-primary">Search</button>
+            </div>
             <table className="table w-full">
                 {/* head */}
                 <thead>
